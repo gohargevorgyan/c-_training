@@ -10,43 +10,29 @@ namespace GitFirstProject
     {
         static void Main(string[] args)
         {
-
-
-            Console.WriteLine("Enter your array length!");
+            Console.WriteLine("Enter your array length");
             int length = int.Parse(Console.ReadLine());
-
             Console.WriteLine("Enter your array element");
+            string temp = Console.ReadLine();
             int[] array = new int[length];
+
+            string[] numberStrings = temp.Split(' ');
+            for (int i = 0; i < numberStrings.Length; i++)
+            {
+                if (string.IsNullOrEmpty(numberStrings[i]) != true)
+                {
+                    array[i] = int.Parse(numberStrings[i]);
+                }
+            }
+            Console.WriteLine(" This is your  sorted array!");
+            SortingAlgorithms.InsertionSort(array);
+            Console.Write("[");
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = int.Parse(Console.ReadLine());
+              Console.Write("{0},", array[i]);
             }
-            ///////////////////////insertion sort
-
-            InsertionSort(array);
-            Console.WriteLine("Sorted Array");
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("{0}", array[i]);
-            }
-
+            Console.Write("]");
             Console.ReadLine();
         }
-            
-        public static void InsertionSort(int[] arr)
-        {
-            for (int i = 1; i < arr.Length; i++)
-            {
-                int key = arr[i];
-                int j = i - 1;
-                while (j >= 0 && arr[j] > key)
-                {
-                    arr[j + 1] = arr[j];
-                    j--;
-                }
-                arr[j + 1] = key;
-            }
-        }
     }
-
 }
